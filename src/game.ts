@@ -19,6 +19,7 @@ let ground: Entity = spawnPlaneX (
     16,16,1)
 let groundMaterial: Material = new Material()
 groundMaterial.albedoColor = new Color3(0.1, 0.4, 0)
+groundMaterial.metallic = 0
 ground.addComponentOrReplace(groundMaterial)
 
 // Create box
@@ -40,17 +41,70 @@ let cube: Entity = spawnGltfX(
     0.3,0.3,0.3)
 
 // Create trees
-let naturePackTree01: Entity = spawnGltfX(
-    new GLTFShape("models/NaturePack_fixed/NaturePack_fixed.glb"),
+let tree_1: Entity = spawnGltfX(
+    new GLTFShape("models/NaturePack_fixed/tree_1.glb"),
     5,0,5,
     0,0,0,
     0.25,0.25,0.25)
-
-let firTree: Entity = spawnGltfX(
-    new GLTFShape("models/TreeA_Fir_Fixed/TreeA_Fir_fixed.glb"),
+let tree_2: Entity = spawnGltfX(
+    new GLTFShape("models/NaturePack_fixed/tree_2.glb"),
+    6.5,0,6.5,
+    0,70,0,
+    0.25,0.25,0.25)
+let tree_3: Entity = spawnGltfX(
+    new GLTFShape("models/NaturePack_fixed/tree_3.glb"),
+    8,0,5,
+    0,270,0,
+    0.25,0.25,0.25)
+let tree_4: Entity = spawnGltfX(
+    new GLTFShape("models/NaturePack_fixed/tree_1.glb"),
+    9.5,0,4.5,
+    0,120,0,
+    0.25,0.25,0.25)
+let tree_5: Entity = spawnGltfX(
+    new GLTFShape("models/NaturePack_fixed/tree_2.glb"),
+    4,0,4.5,
+    0,35,0,
+    0.25,0.25,0.25)
+let firTree_1: Entity = spawnGltfX(
+    new GLTFShape("models/TreeA_Fir_Fixed/single_files/TreeA_Optimised_28_June_2018_A01.babylon.gltf"),
     10,0,10,
     0,0,0,
     .1,.1,.1)
+let firTree_2: Entity = spawnGltfX(
+    new GLTFShape("models/TreeA_Fir_Fixed/TreeA_Fir_fixed.glb"),
+    4,0,10,
+    0,0,0,
+    .1,.1,.1)
+
+// Backgrounds (north and east)
+let backgroundTexture_north = new Texture("models/Backgrounds/landscape_north.jpg")
+let backgroundMaterial_north = new Material()
+backgroundMaterial_north.albedoTexture = backgroundTexture_north
+backgroundMaterial_north.metallic = 0
+let background_north = new Entity()
+background_north.addComponent(new PlaneShape())
+background_north.addComponent(backgroundMaterial_north)
+background_north.addComponent(
+    new Transform({
+        position: new Vector3(8,8,16),
+        scale: new Vector3(16, 16, 16),
+        rotation: Quaternion.Euler(180, 0, 0)
+    })
+)
+engine.addEntity(background_north)
+
+// Create trees
+let bush_1: Entity = spawnGltfX(
+    new GLTFShape("models/NaturePack_fixed/bush_1.glb"),
+    4,0,3,
+    0,0,0,
+    0.25,0.25,0.25)
+let bush_2: Entity = spawnGltfX(
+    new GLTFShape("models/NaturePack_fixed/bush_2.glb"),
+    2,0,4,
+    0,70,0,
+    0.25,0.25,0.25)
 
 // Create bird
 let bird: Entity = spawnGltfX(
