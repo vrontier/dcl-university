@@ -77,23 +77,6 @@ let firTree_2: Entity = spawnGltfX(
     0,0,0,
     .1,.1,.1)
 
-// Backgrounds (north and east)
-let backgroundTexture_north = new Texture("models/Backgrounds/landscape_north.jpg")
-let backgroundMaterial_north = new Material()
-backgroundMaterial_north.albedoTexture = backgroundTexture_north
-backgroundMaterial_north.metallic = 0
-let background_north = new Entity()
-background_north.addComponent(new PlaneShape())
-background_north.addComponent(backgroundMaterial_north)
-background_north.addComponent(
-    new Transform({
-        position: new Vector3(8,8,16),
-        scale: new Vector3(16, 16, 16),
-        rotation: Quaternion.Euler(180, 0, 0)
-    })
-)
-engine.addEntity(background_north)
-
 // Create trees
 let bush_1: Entity = spawnGltfX(
     new GLTFShape("models/NaturePack_fixed/bush_1.glb"),
